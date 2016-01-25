@@ -14,6 +14,10 @@ class WeatherProvider: NSObject {
 	static let basicURL = "http://api.openweathermap.org/data/2.5/forecast/daily"
 	static let appID = "750458e9cdcade313ceb5e65e250e8fd"
 	
+	class func provideWeatherForCity(city: String, completionBlock: ([WeatherDay]) -> Void) {
+		
+	}
+	
 	class func provideWeatherForCoordinates(latitude: Double, longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
 		
 		let urlString = basicURL + "?q=London&mode=json&units=metric&cnt=10&appid=\(appID)"

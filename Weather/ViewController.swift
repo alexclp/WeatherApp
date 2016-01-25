@@ -8,24 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+	var days = [WeatherDay]()
+	@IBOutlet weak var tableView: UITableView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		
 		WeatherProvider.provideWeatherForCoordinates(51.5072, longitude: 0.1275) { (days) -> Void in
-
+			self.days.appendContentsOf(days)
+			self.tableView.reloadData()
 		}
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 		
+		let current = days[indexPath.row]
+		
+		cell.textLabel?.text = current.briefDesc
+		cell.detailTextLabel?.text = current.longDesc
+		
+		return cell
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return days.count
 	}
 
-
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+	}
 }
 

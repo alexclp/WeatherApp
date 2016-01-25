@@ -162,8 +162,8 @@
 		0FD994781C54699000EAB412 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0FD9944C1C5329F900EAB412 /* Main.storyboard */,
 				0FD994511C5329F900EAB412 /* LaunchScreen.storyboard */,
+				0FD9944C1C5329F900EAB412 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
