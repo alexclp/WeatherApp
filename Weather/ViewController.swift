@@ -41,6 +41,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		}
 	}
 	
+	func stringFromDate(date: NSDate) -> String {
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //format style. Browse online to get a format that fits your needs.
+		let dateString = dateFormatter.stringFromDate(date)
+		
+		return dateString
+	}
+	
+	func getDayOfWeek(today: String) -> String {
+		
+		let formatter  = NSDateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+		let todayDate = formatter.dateFromString(today)!
+		let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+		let myComponents = myCalendar.components(.Weekday, fromDate: todayDate)
+		let weekDay = myComponents.weekday
+		
+		let days: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+		
+		
+		return days[Int(weekDay) - 1]
+	}
+	
 //	MARK: TABLE VIEW METHODS
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -49,30 +72,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		let current = days[indexPath.row]
 		cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
 		
-		print("id: \(current.iconID)")
-		
 		Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
 			.responseImage { response in
-				debugPrint(response)
-				
-				print(response.request)
-				print(response.response)
-				debugPrint(response.result)
-				
 				if let image = response.result.value {
-//					print("image downloaded: \(image)")
 					cell.weatherImage?.image = image
 				}
 		}
 		
+		let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
+		cell.dayLabel?.text = getDayOfWeek(stringFromDate(date))
+		
 		cell.descLabel?.text = current.briefDesc
 		
 		if let minTemp = current.minTemp {
-			cell.minLabel?.text = minTemp
+			cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0]
 		}
 		
 		if let maxTemp = current.maxTemp {
-			cell.maxLabel?.text = maxTemp
+			cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0]
 		}
 		
 		if let desc = current.briefDesc {
