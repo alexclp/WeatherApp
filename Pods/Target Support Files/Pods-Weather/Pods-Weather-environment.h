@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 1
 #define COCOAPODS_VERSION_PATCH_Alamofire 5
 
+// AlamofireImage
+#define COCOAPODS_POD_AVAILABLE_AlamofireImage
+#define COCOAPODS_VERSION_MAJOR_AlamofireImage 2
+#define COCOAPODS_VERSION_MINOR_AlamofireImage 3
+#define COCOAPODS_VERSION_PATCH_AlamofireImage 0
+

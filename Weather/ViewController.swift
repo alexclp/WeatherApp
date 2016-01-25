@@ -20,7 +20,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-		// For use in foreground
 		self.locationManager.requestWhenInUseAuthorization()
 		
 		if CLLocationManager.locationServicesEnabled() {
@@ -40,12 +39,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //	MARK: TABLE VIEW METHODS
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
 		
 		let current = days[indexPath.row]
 		
-		cell.textLabel?.text = current.briefDesc
-		cell.detailTextLabel?.text = current.longDesc
+		
 		
 		return cell
 	}
