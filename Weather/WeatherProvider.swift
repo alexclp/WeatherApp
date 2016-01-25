@@ -40,8 +40,8 @@ class WeatherProvider: NSObject {
 						
 							weatherDayObject.timestamp = day["dt"] as? String
 							let temperatures = day["temp"] as! Dictionary<String, Double>
-							weatherDayObject.maxTemp = String(temperatures["max"])
-							weatherDayObject.minTemp = String(temperatures["min"])
+							weatherDayObject.maxTemp = String(temperatures["max"]!)
+							weatherDayObject.minTemp = String(temperatures["min"]!)
 					
 							let descriptions = day["weather"] as! Array<Dictionary<String, AnyObject>>
 							let today = descriptions[0]

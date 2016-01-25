@@ -20,6 +20,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+		self.tableView.registerNib(UINib(nibName: "WeatherForecastCustomCell", bundle: nil), forCellReuseIdentifier: "weatherCell")
+		
 		self.locationManager.requestWhenInUseAuthorization()
 		
 		if CLLocationManager.locationServicesEnabled() {
@@ -42,8 +44,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
 		
 		let current = days[indexPath.row]
+		cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
+//		cell.minLabel?.text = current.minTemp
+//		cell.maxLabel?.text = current.maxTemp
+		cell.descLabel?.text = current.briefDesc
 		
+		if let minTemp = current.minTemp {
+			cell.minLabel?.text = minTemp
+		}
 		
+		if let maxTemp = current.maxTemp {
+			cell.maxLabel?.text = maxTemp
+		}
+		
+		if let desc = current.briefDesc {
+			cell.descLabel?.text = desc
+		}
+	
+		print("min: \(current.minTemp)")
 		
 		return cell
 	}
