@@ -18,7 +18,7 @@ class WeatherProvider: NSObject {
 		
 	}
 	
-	class func provideWeatherForCoordinates(latitude: Double, longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
+	class func provideWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
 		
 		let urlString = basicURL + "?q=London&mode=json&units=metric&cnt=10&appid=\(appID)"
 		print("Providing weather")

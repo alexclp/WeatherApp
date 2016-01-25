@@ -7,22 +7,37 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
 	var days = [WeatherDay]()
+	let locationManager = CLLocationManager()
+	
 	@IBOutlet weak var tableView: UITableView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+		// For use in foreground
+		self.locationManager.requestWhenInUseAuthorization()
 		
-		WeatherProvider.provideWeatherForCoordinates(51.5072, longitude: 0.1275) { (days) -> Void in
-			self.days.appendContentsOf(days)
+		if CLLocationManager.locationServicesEnabled() {
+			locationManager.delegate = self
+			locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+			locationManager.startUpdatingLocation()
+		}
+	}
+	
+	func fetchDataForCoordinates(latitude: Double, longitude: Double) {
+		WeatherProvider.provideWeatherForCoordinates(latitude, longitude) { (days) -> Void in
+			self.days = days
 			self.tableView.reloadData()
 		}
 	}
+	
+//	MARK: TABLE VIEW METHODS
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -41,6 +56,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+	}
+	
+//	MARK: LOCATION
+	
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		let location: CLLocationCoordinate2D = manager.location!.coordinate
+		
+		fetchDataForCoordinates(location.latitude, longitude: location.longitude)
+		self.locationManager.stopUpdatingLocation()
 	}
 }
 
