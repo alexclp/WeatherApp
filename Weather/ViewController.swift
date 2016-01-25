@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreLocation
+import AlamofireImage
+import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
+	let basicImageURL = "http://openweathermap.org/img/w/"
 	var days = [WeatherDay]()
 	let locationManager = CLLocationManager()
 	
@@ -45,8 +48,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		
 		let current = days[indexPath.row]
 		cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
-//		cell.minLabel?.text = current.minTemp
-//		cell.maxLabel?.text = current.maxTemp
+		
+		print("id: \(current.iconID)")
+		
+		Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
+			.responseImage { response in
+				debugPrint(response)
+				
+				print(response.request)
+				print(response.response)
+				debugPrint(response.result)
+				
+				if let image = response.result.value {
+//					print("image downloaded: \(image)")
+					cell.weatherImage?.image = image
+				}
+		}
+		
 		cell.descLabel?.text = current.briefDesc
 		
 		if let minTemp = current.minTemp {
@@ -61,8 +79,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			cell.descLabel?.text = desc
 		}
 	
-		print("min: \(current.minTemp)")
-		
 		return cell
 	}
 	

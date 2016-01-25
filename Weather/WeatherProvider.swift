@@ -47,6 +47,7 @@ class WeatherProvider: NSObject {
 							let today = descriptions[0]
 							weatherDayObject.briefDesc = today["main"] as? String
 							weatherDayObject.longDesc = today["description"] as? String
+							weatherDayObject.iconID = today["icon"] as? String
 							
 							parsedDays.append(weatherDayObject)
 						}
