@@ -20,7 +20,7 @@ class WeatherProvider: NSObject {
 	
 	class func provideWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
 		
-		let urlString = basicURL + "?q=London&mode=json&units=metric&cnt=10&appid=\(appID)"
+		let urlString = basicURL + "?lat=\(latitude)&lon=\(longitude)&mode=json&units=metric&cnt=10&appid=\(appID)"
 		print("Providing weather")
 		
 		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
