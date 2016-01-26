@@ -17,28 +17,28 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-8A-cLf">
                         <rect key="frame" x="8" y="136" width="304" height="52"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="--, feels like --" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-8D-rdf">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--, feels like --" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-8D-rdf">
                         <rect key="frame" x="8" y="94" width="304" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="34" id="kNt-Xn-6AA"/>
+                            <constraint firstAttribute="height" constant="36" id="O8A-sP-MCT"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="a0L-8D-rdf" firstAttribute="leading" secondItem="FYn-8A-cLf" secondAttribute="leading" id="3VE-8B-LnQ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="FYn-8A-cLf" secondAttribute="bottom" constant="53" id="KOk-Dc-mJt"/>
-                    <constraint firstItem="a0L-8D-rdf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="86" id="Re9-YL-NGs"/>
-                    <constraint firstItem="FYn-8A-cLf" firstAttribute="top" secondItem="a0L-8D-rdf" secondAttribute="bottom" constant="8" symbolic="YES" id="SyS-uD-Qjw"/>
-                    <constraint firstItem="a0L-8D-rdf" firstAttribute="trailing" secondItem="FYn-8A-cLf" secondAttribute="trailing" id="jXt-eg-3Es"/>
-                    <constraint firstItem="a0L-8D-rdf" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="skP-Pj-G8c"/>
-                    <constraint firstItem="FYn-8A-cLf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="xgi-Sc-99V"/>
+                    <constraint firstItem="a0L-8D-rdf" firstAttribute="trailing" secondItem="FYn-8A-cLf" secondAttribute="trailing" id="4PH-vL-6VJ"/>
+                    <constraint firstItem="FYn-8A-cLf" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="95k-UR-UYx"/>
+                    <constraint firstItem="FYn-8A-cLf" firstAttribute="top" secondItem="a0L-8D-rdf" secondAttribute="bottom" constant="6" id="Q7t-mi-XYo"/>
+                    <constraint firstItem="a0L-8D-rdf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="86" id="YA4-ne-TAX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="FYn-8A-cLf" secondAttribute="bottom" constant="53" id="aVH-6i-oCE"/>
+                    <constraint firstItem="a0L-8D-rdf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="d9l-FK-uZe"/>
+                    <constraint firstItem="FYn-8A-cLf" firstAttribute="leading" secondItem="a0L-8D-rdf" secondAttribute="leading" id="foV-CX-lI9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
