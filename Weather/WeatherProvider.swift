@@ -12,10 +12,39 @@ import CoreLocation
 class WeatherProvider: NSObject {
 	
 	static let basicURL = "http://api.openweathermap.org/data/2.5/forecast/daily"
+	static let basicURLCurrent = "http://api.openweathermap.org/data/2.5/weather"
 	static let appID = "750458e9cdcade313ceb5e65e250e8fd"
 	
-	class func provideCurrentWeatherForCoordinates(city: String, completionBlock: (WeatherDay) -> Void) {
+	class func provideCurrentWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: (WeatherDay) -> Void) {
+		let urlString = basicURLCurrent + "?lat=\(latitude)&lon=\(longitude)&appid=\(appID)&units=metric"
+
 		
+		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
+			
+			let weatherDayObject = WeatherDay()
+			
+			switch response {
+				case .Failure(_): print("Failed to fetch data")
+				
+				case .Success(let data):
+					if let json = data as? Dictionary<NSObject, AnyObject> {
+						let temps = json["main"] as! Dictionary<String, AnyObject>
+						
+						var temp = String(temps["temp"]!)
+						temp = temp.componentsSeparatedByString(".")[0]
+						weatherDayObject.maxTemp = temp
+						
+						let windSpeeds = json["wind"] as! Dictionary<String, Double>
+						weatherDayObject.windSpeed = String(windSpeeds["speed"]!)
+						
+						let descriptions = json["weather"] as! Array<Dictionary<String, AnyObject>>
+						let first = descriptions[0]
+						weatherDayObject.longDesc = first["main"] as? String
+					}
+			}
+			
+			completionBlock(weatherDayObject)
+		}
 	}
 	
 	class func provideWeatherForCity(city: String, completionBlock: ([WeatherDay]) -> Void) {

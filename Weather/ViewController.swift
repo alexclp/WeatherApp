@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	let basicImageURL = "http://openweathermap.org/img/w/"
 	var days = [WeatherDay]()
 	let locationManager = CLLocationManager()
+	var location = CLLocationCoordinate2D()
 	
 	@IBOutlet weak var tableView: UITableView!
 	
@@ -79,25 +80,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			
 			let cell = tableView.dequeueReusableCellWithIdentifier("currentWeatherCell", forIndexPath: indexPath) as! CurrentWeatherCustomTableViewCell
 			
-			let current = self.days[0]
-			var feelslike = WindChillCalculator.calculateFactor(current.maxTemp!, windSpeed: current.windSpeed!, units: "metric")
-			feelslike = "\(feelslike.componentsSeparatedByString(".")[0])°"
-			let maxTemp = "\(current.maxTemp!.componentsSeparatedByString(".")[0])°"
+			WeatherProvider.provideCurrentWeatherForCoordinates(self.location.latitude, self.location.longitude, completionBlock: { (day) -> Void in
+				let current = day
+				
+				var feelslike = WindChillCalculator.calculateFactor(current.maxTemp!, windSpeed: current.windSpeed!, units: "metric")
+				feelslike = "\(feelslike.componentsSeparatedByString(".")[0])°"
+				let maxTemp = "\(current.maxTemp!.componentsSeparatedByString(".")[0])°"
+				
+				let attributedDegrees = NSMutableAttributedString(string: "\(maxTemp), feels like \(feelslike)")
+				attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location: 0, length: maxTemp.length))
+				attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: NSRange(location: attributedDegrees.length - feelslike.length, length: feelslike.length))
+				
+				cell.degreesLabel?.attributedText = attributedDegrees
+				
+				var desc = current.longDesc!
+				desc.replaceRange(desc.startIndex...desc.startIndex, with: String(desc[desc.startIndex]).capitalizedString)
+				
+				let attributedDesc = NSMutableAttributedString(string: desc)
+				attributedDesc.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location: 0, length: attributedDesc.length))
+				
+				cell.descriptionLabel?.attributedText = attributedDesc
+			})
 			
-			let attributedDegrees = NSMutableAttributedString(string: "\(maxTemp), feels like \(feelslike)")
-			attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location: 0, length: maxTemp.length))
-			attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: NSRange(location: attributedDegrees.length - feelslike.length, length: feelslike.length))
-			
-			cell.degreesLabel?.attributedText = attributedDegrees
-			
-			var desc = current.longDesc!
-			desc.replaceRange(desc.startIndex...desc.startIndex, with: String(desc[desc.startIndex]).capitalizedString)
-			
-			let attributedDesc = NSMutableAttributedString(string: desc)
-			attributedDesc.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location: 0, length: attributedDesc.length))
-			
-			cell.descriptionLabel?.attributedText = attributedDesc
 			return cell
+			
 			
 		} else {
 			
@@ -157,7 +163,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //	MARK: LOCATION
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		let location: CLLocationCoordinate2D = manager.location!.coordinate
+		self.location = manager.location!.coordinate
 		/*
 		let coder: CLGeocoder = CLGeocoder()
 		coder.reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
@@ -174,7 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			}
 		})
 		*/
-		fetchDataForCoordinates(location.latitude, longitude: location.longitude)
+		fetchDataForCoordinates(self.location.latitude, longitude: self.location.longitude)
 		self.locationManager.stopUpdatingLocation()
 	}
 }
