@@ -16,4 +16,5 @@ class WeatherDay: NSObject {
 	var briefDesc: String?
 	var longDesc: String?
 	var iconID: String?
+	var windSpeed: String?
 }

@@ -10,6 +10,9 @@ import UIKit
 
 class CurrentWeatherCustomTableViewCell: UITableViewCell {
 
+	@IBOutlet weak var degreesLabel: UILabel?
+	@IBOutlet weak var descriptionLabel: UILabel?
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,6 +11,12 @@ import CoreLocation
 import AlamofireImage
 import Alamofire
 
+extension String {
+	var length: Int {
+		return characters.count
+	}
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
 	let basicImageURL = "http://openweathermap.org/img/w/"
@@ -68,40 +74,72 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //	MARK: TABLE VIEW METHODS
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
 		
-		let current = days[indexPath.row]
-		cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
-		
-		Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
-			.responseImage { response in
-				if let image = response.result.value {
-					cell.weatherImage?.image = image
-				}
+		if indexPath.row == 0 {
+			
+			let cell = tableView.dequeueReusableCellWithIdentifier("currentWeatherCell", forIndexPath: indexPath) as! CurrentWeatherCustomTableViewCell
+			
+			let current = self.days[0]
+			var feelslike = WindChillCalculator.calculateFactor(current.maxTemp!, windSpeed: current.windSpeed!, units: "metric")
+			feelslike = "\(feelslike.componentsSeparatedByString(".")[0])°"
+			let maxTemp = "\(current.maxTemp!.componentsSeparatedByString(".")[0])°"
+			
+			let attributedDegrees = NSMutableAttributedString(string: "\(maxTemp), feels like \(feelslike)")
+			attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location: 0, length: maxTemp.length))
+			attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: NSRange(location: attributedDegrees.length - feelslike.length, length: feelslike.length))
+			
+			cell.degreesLabel?.attributedText = attributedDegrees
+			
+			var desc = current.longDesc!
+			desc.replaceRange(desc.startIndex...desc.startIndex, with: String(desc[desc.startIndex]).capitalizedString)
+			
+			let attributedDesc = NSMutableAttributedString(string: desc)
+			attributedDesc.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location: 0, length: attributedDesc.length))
+			
+			cell.descriptionLabel?.attributedText = attributedDesc
+			return cell
+			
+		} else {
+			
+			let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
+			let current = self.days[indexPath.row - 1]
+			cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
+			
+			Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
+				.responseImage { response in
+					if let image = response.result.value {
+						cell.weatherImage?.image = image
+					}
+			}
+			
+			let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
+			cell.dayLabel?.text = getDayOfWeek(stringFromDate(date))
+			
+			cell.descLabel?.text = current.briefDesc
+			
+			if let minTemp = current.minTemp {
+				cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0] + "°"
+			}
+			
+			if let maxTemp = current.maxTemp {
+				cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0] + "°"
+			}
+			
+			if let desc = current.briefDesc {
+				cell.descLabel?.text = desc
+			}
+			
+			return cell
 		}
 		
-		let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
-		cell.dayLabel?.text = getDayOfWeek(stringFromDate(date))
 		
-		cell.descLabel?.text = current.briefDesc
-		
-		if let minTemp = current.minTemp {
-			cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0] + "°"
-		}
-		
-		if let maxTemp = current.maxTemp {
-			cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0] + "°"
-		}
-		
-		if let desc = current.briefDesc {
-			cell.descLabel?.text = desc
-		}
-	
-		return cell
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return days.count
+		if self.days.count != 0 {
+			return self.days.count + 1
+		}
+		return 0
 	}
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -120,7 +158,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		let location: CLLocationCoordinate2D = manager.location!.coordinate
-		
+		/*
+		let coder: CLGeocoder = CLGeocoder()
+		coder.reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
+			
+			if (error != nil) {
+				print("Reverse geocoder failed with error" + error!.localizedDescription)
+			}
+			
+			if placemarks!.count > 0 {
+				let pm = placemarks![0] as CLPlacemark
+//				print(pm)
+			} else {
+				print("Problem with the data received from geocoder")
+			}
+		})
+		*/
 		fetchDataForCoordinates(location.latitude, longitude: location.longitude)
 		self.locationManager.stopUpdatingLocation()
 	}

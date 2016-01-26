@@ -14,6 +14,10 @@ class WeatherProvider: NSObject {
 	static let basicURL = "http://api.openweathermap.org/data/2.5/forecast/daily"
 	static let appID = "750458e9cdcade313ceb5e65e250e8fd"
 	
+	class func provideCurrentWeatherForCoordinates(city: String, completionBlock: (WeatherDay) -> Void) {
+		
+	}
+	
 	class func provideWeatherForCity(city: String, completionBlock: ([WeatherDay]) -> Void) {
 		
 	}
@@ -21,6 +25,7 @@ class WeatherProvider: NSObject {
 	class func provideWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
 		
 		let urlString = basicURL + "?lat=\(latitude)&lon=\(longitude)&mode=json&units=metric&cnt=10&appid=\(appID)"
+		print("url: \(urlString)")
 		print("Providing weather")
 		
 		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
@@ -42,6 +47,7 @@ class WeatherProvider: NSObject {
 							let temperatures = day["temp"] as! Dictionary<String, Double>
 							weatherDayObject.maxTemp = String(temperatures["max"]!)
 							weatherDayObject.minTemp = String(temperatures["min"]!)
+							weatherDayObject.windSpeed = String(day["speed"]!)
 					
 							let descriptions = day["weather"] as! Array<Dictionary<String, AnyObject>>
 							let today = descriptions[0]
