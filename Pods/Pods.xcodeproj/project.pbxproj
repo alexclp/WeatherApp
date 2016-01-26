@@ -383,6 +383,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					B116051ADA97E07874481449 = {
+						DevelopmentTeam = Q3V7L8YK8G;
+					};
+				};
 			};
 			buildConfigurationList = 02FED81F0CE36CCB8FA87D6A /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -569,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 818DD345BB48AF08E6AA5CFB /* Pods-Weather-Alamofire-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -584,6 +590,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-Weather-Alamofire/Pods-Weather-Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Alamofire;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 818DD345BB48AF08E6AA5CFB /* Pods-Weather-Alamofire-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -639,6 +647,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-Weather-Alamofire/Pods-Weather-Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Alamofire;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
