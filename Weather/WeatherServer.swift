@@ -18,6 +18,7 @@ enum ServerResponse {
 	case Failure(ServerError)
 }
 
+
 class WeatherServer: NSObject {
 
 	class func sharedServer() -> WeatherServer {

@@ -30,6 +30,12 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpF-Ob-Lun">
+                        <rect key="frame" x="8" y="23" width="304" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="a0L-8D-rdf" firstAttribute="trailing" secondItem="FYn-8A-cLf" secondAttribute="trailing" id="4PH-vL-6VJ"/>
@@ -42,6 +48,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="IpF-Ob-Lun" id="rHn-t4-vb7"/>
                 <outlet property="degreesLabel" destination="a0L-8D-rdf" id="PUH-dp-D0K"/>
                 <outlet property="descriptionLabel" destination="FYn-8A-cLf" id="ZCB-Nn-Ea8"/>
             </connections>

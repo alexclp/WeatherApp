@@ -100,6 +100,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 				attributedDesc.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location: 0, length: attributedDesc.length))
 				
 				cell.descriptionLabel?.attributedText = attributedDesc
+				
+				cell.dateLabel?.text = DateUtility.getCurrentDate()
 			})
 			
 			return cell
@@ -119,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			}
 			
 			let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
-			cell.dayLabel?.text = getDayOfWeek(stringFromDate(date))
+			cell.dayLabel?.text = DateUtility.getDayOfWeek(DateUtility.stringFromDate(date))
 			
 			cell.descLabel?.text = current.briefDesc
 			

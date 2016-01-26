@@ -12,6 +12,7 @@ class CurrentWeatherCustomTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var degreesLabel: UILabel?
 	@IBOutlet weak var descriptionLabel: UILabel?
+	@IBOutlet weak var dateLabel: UILabel?
 	
     override func awakeFromNib() {
         super.awakeFromNib()
