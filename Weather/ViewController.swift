@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		self.tableView.registerNib(UINib(nibName: "WeatherForecastCustomCell", bundle: nil), forCellReuseIdentifier: "weatherCell")
+		self.tableView.registerNib(UINib(nibName: "CurrentWeatherCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "currentWeatherCell")
 		
 		self.locationManager.requestWhenInUseAuthorization()
 		
@@ -104,9 +105,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return 72.0
 		if indexPath.row == 0 {
-			return 250.0
+			return self.view.bounds.size.height / 2.5
 		} else {
 			return 72.0
 		}
