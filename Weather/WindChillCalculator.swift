@@ -10,6 +10,18 @@ import UIKit
 
 class WindChillCalculator: NSObject {
 	
+	class func sharedCalculator() -> WindChillCalculator {
+		
+		var sharedInstance: WindChillCalculator!
+		var onceToken = dispatch_once_t()
+		
+		dispatch_once(&onceToken) { () -> Void in
+			sharedInstance = WindChillCalculator()
+		}
+		
+		return sharedInstance
+	}
+	
 	class func calculateFactor(temperature: String, windSpeed: String, units: String) -> String {
 		
 		let temp = Double(temperature)
