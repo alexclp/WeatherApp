@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	
 	func stringFromDate(date: NSDate) -> String {
 		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //format style. Browse online to get a format that fits your needs.
+		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 		let dateString = dateFormatter.stringFromDate(date)
 		
 		return dateString
@@ -85,11 +85,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		cell.descLabel?.text = current.briefDesc
 		
 		if let minTemp = current.minTemp {
-			cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0]
+			cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0] + "°"
 		}
 		
 		if let maxTemp = current.maxTemp {
-			cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0]
+			cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0] + "°"
 		}
 		
 		if let desc = current.briefDesc {
@@ -101,6 +101,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return days.count
+	}
+	
+	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return 72.0
+		if indexPath.row == 0 {
+			return 250.0
+		} else {
+			return 72.0
+		}
 	}
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
