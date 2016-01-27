@@ -49,28 +49,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		}
 	}
 	
-	func stringFromDate(date: NSDate) -> String {
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-		let dateString = dateFormatter.stringFromDate(date)
+	func getWeatherIcon(code: String) -> UIImage? {
 		
-		return dateString
-	}
-	
-	func getDayOfWeek(today: String) -> String {
-		
-		let formatter  = NSDateFormatter()
-		formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-		let todayDate = formatter.dateFromString(today)!
-		let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-		let myComponents = myCalendar.components(.Weekday, fromDate: todayDate)
-		let weekDay = myComponents.weekday
-		
-		let days: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-		
-		
-		return days[Int(weekDay) - 1]
-	}
+		if code == "01d" || code == "01n" {
+			return UIImage(named: "clear_sky.png")
+		} else if code == "02d" || code == "02n" {
+			return UIImage(named: "few_clouds.png")
+		} else if code == "03d" || code == "03n" {
+			return UIImage(named: "scattered_clouds.png")
+		} else if code == "04d" || code == "04n" {
+			return UIImage(named: "broken_clouds.png")
+		} else if code == "09d" || code == "09n" {
+			return UIImage(named: "shower_rain.png")
+		} else if code == "10d" || code == "10n" {
+			return UIImage(named: "rain.png")
+		} else if code == "11d" || code == "11n" {
+			return UIImage(named: "thunderstorm.png")!
+		} else if code == "13d" || code == "13n" {
+			return UIImage(named: "snow.png")
+		} else if code == "50d" || code == "50n" {
+			return UIImage(named: "mist.png")
+		} else {
+			return UIImage(named: "placeholder.png")
+		}
+ 	}
 	
 //	MARK: TABLE VIEW METHODS
 
@@ -111,14 +113,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			
 			let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
 			let current = self.days[indexPath.row - 1]
-			cell.weatherImage?.image = UIImage(contentsOfFile: "placeholder.png")
+//			cell.weatherImage?.image = getWeatherIcon(current.iconID!)
+			cell.weatherImage?.image = UIImage(named: "rain.png")
 			
-			Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
+			/*Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
 				.responseImage { response in
 					if let image = response.result.value {
 						cell.weatherImage?.image = image
 					}
-			}
+			}*/
+			
+			
 			
 			let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
 			cell.dayLabel?.text = DateUtility.getDayOfWeek(DateUtility.stringFromDate(date))

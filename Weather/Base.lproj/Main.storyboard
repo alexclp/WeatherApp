@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xWu-Fb-J0V">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="weatherCell" rowHeight="56" id="4Zk-8t-b5c" customClass="WeatherForecastCustomCell" customModule="Weather" customModuleProvider="target">
@@ -36,13 +36,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="92L-ml-cIy"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="656-Il-2Bw">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="bVp-n3-EGw"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3qt-g3-xnt"/>
+                                    <barButtonItem systemItem="edit" id="Ffv-mU-wQ3"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JA1-fc-hSY"/>
-                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="NxS-ch-q5E"/>
-                            <constraint firstAttribute="trailing" secondItem="xWu-Fb-J0V" secondAttribute="trailing" id="VSR-Pk-NBL"/>
-                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zLa-3o-4FY"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ibb-zO-X2l"/>
+                            <constraint firstAttribute="trailing" secondItem="656-Il-2Bw" secondAttribute="trailing" id="Myh-HT-zG3"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="top" secondItem="xWu-Fb-J0V" secondAttribute="bottom" id="Vmx-HH-QTc"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="trailing" secondItem="xWu-Fb-J0V" secondAttribute="trailing" id="haM-l0-Lfy"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="mqL-M7-4Tk"/>
+                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rSa-3H-F3S"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="leading" secondItem="xWu-Fb-J0V" secondAttribute="leading" id="rqF-F1-R6K"/>
                         </constraints>
                     </view>
                     <connections>
