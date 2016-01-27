@@ -113,16 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			
 			let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! WeatherForecastCustomCell
 			let current = self.days[indexPath.row - 1]
-//			cell.weatherImage?.image = getWeatherIcon(current.iconID!)
-			cell.weatherImage?.image = UIImage(named: "rain.png")
-			
-			/*Alamofire.request(.GET, basicImageURL + "\(current.iconID!).png")
-				.responseImage { response in
-					if let image = response.result.value {
-						cell.weatherImage?.image = image
-					}
-			}*/
-			
+			cell.weatherImage?.image = getWeatherIcon(current.iconID!)
 			
 			
 			let date = NSDate(timeIntervalSince1970: Double(current.timestamp!)!)
