@@ -19,7 +19,6 @@ extension String {
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
-	let basicImageURL = "http://openweathermap.org/img/w/"
 	var days = [WeatherDay]()
 	let locationManager = CLLocationManager()
 	var location = CLLocationCoordinate2D()
@@ -29,6 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+//		LocationUtility.sharedLocationUtility().coordinatesForCityName("London", completionBlock: )
+		
+		LocationUtility.sharedLocationUtility().coordinatesForCityName("London") { (coordinate) -> Void in
+			
+		}
 		
 		self.tableView.registerNib(UINib(nibName: "WeatherForecastCustomCell", bundle: nil), forCellReuseIdentifier: "weatherCell")
 		self.tableView.registerNib(UINib(nibName: "CurrentWeatherCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "currentWeatherCell")
@@ -181,5 +186,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		fetchDataForCoordinates(self.location.latitude, longitude: self.location.longitude)
 		self.locationManager.stopUpdatingLocation()
 	}
+	
+//	MARK: USER INTERACTION
+//	TODO: WRAP UP WEATHER INFO
+	
+	@IBAction func displayShareSheet() {
+		let activityViewController = UIActivityViewController(activityItems: ["AA" as NSString], applicationActivities: nil)
+		presentViewController(activityViewController, animated: true, completion: {})
+	}
+	
 }
 

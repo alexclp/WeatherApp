@@ -17,8 +17,6 @@ class WeatherProvider: NSObject {
 	
 	class func provideCurrentWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: (WeatherDay) -> Void) {
 		let urlString = basicURLCurrent + "?lat=\(latitude)&lon=\(longitude)&appid=\(appID)&units=metric"
-//		let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=AIzaSyCqoyjCwWOxjXtQUHHPBYsryw2rV9M8NjU"
-
 		
 		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
 			
@@ -28,7 +26,9 @@ class WeatherProvider: NSObject {
 				case .Failure(_): print("Failed to fetch data")
 				
 				case .Success(let data):
+					
 					if let json = data as? Dictionary<NSObject, AnyObject> {
+//						print("json: \(json["results"]![0])")
 						let temps = json["main"] as! Dictionary<String, AnyObject>
 						
 						var temp = String(temps["temp"]!)
