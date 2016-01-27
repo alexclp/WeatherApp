@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreLocation
-import AlamofireImage
-import Alamofire
 
 extension String {
 	var length: Int {

@@ -3,40 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict>
-		<key>Pods-Weather-Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Weather-AlamofireImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Weather.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
+	<dict/>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>34E86070745282CBAC0F247C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>54B305E9FB1ADD46E1FE6E33</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DDCA383F342909761030E1EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
