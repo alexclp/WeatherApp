@@ -28,7 +28,6 @@ class WeatherProvider: NSObject {
 				case .Success(let data):
 					
 					if let json = data as? Dictionary<NSObject, AnyObject> {
-//						print("json: \(json["results"]![0])")
 						let temps = json["main"] as! Dictionary<String, AnyObject>
 						
 						var temp = String(temps["temp"]!)
