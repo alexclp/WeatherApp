@@ -16,19 +16,19 @@ extension String {
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
-
+	
 	var days = [WeatherDay]()
 	let locationManager = CLLocationManager()
 	var location = CLLocationCoordinate2D()
+	var currentCity = ""
 	
 	@IBOutlet weak var tableView: UITableView!
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		
-//		LocationUtility.sharedLocationUtility().coordinatesForCityName("London", completionBlock: )
-		
+	
 		LocationUtility.sharedLocationUtility().coordinatesForCityName("London") { (coordinate) -> Void in
 			
 		}
@@ -40,12 +40,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		
 		if CLLocationManager.locationServicesEnabled() {
 			locationManager.delegate = self
-			locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+			locationManager.desiredAccuracy = kCLLocationAccuracyBest
 			locationManager.startUpdatingLocation()
 		}
 	}
 	
-	func fetchDataForCoordinates(latitude: Double, longitude: Double) {
+	func fetchDataForCoordinates(latitude: Double, _ longitude: Double) {
+		
 		WeatherProvider.provideWeatherForCoordinates(latitude, longitude) { (days) -> Void in
 			self.days = days
 			self.tableView.reloadData()
@@ -107,6 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 				cell.descriptionLabel?.attributedText = attributedDesc
 				
 				cell.dateLabel?.text = DateUtility.getCurrentDate()
+				cell.cityLabel?.text = self.currentCity
 			})
 			
 			return cell
@@ -143,6 +145,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
 		if self.days.count != 0 {
 			return self.days.count + 1
 		}
@@ -150,6 +153,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		
 		if indexPath.row == 0 {
 			return self.view.bounds.size.height / 2.5
 		} else {
@@ -158,14 +162,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	}
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 	}
 	
 //	MARK: LOCATION
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		
 		self.location = manager.location!.coordinate
-		/*
+
 		let coder: CLGeocoder = CLGeocoder()
 		coder.reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
 			
@@ -175,13 +181,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 			
 			if placemarks!.count > 0 {
 				let pm = placemarks![0] as CLPlacemark
-//				print(pm)
+
+				if let locality = pm.locality {
+					self.currentCity = locality
+				}
 			} else {
 				print("Problem with the data received from geocoder")
 			}
+			
+			self.fetchDataForCoordinates(self.location.latitude, self.location.longitude)
 		})
-		*/
-		fetchDataForCoordinates(self.location.latitude, longitude: self.location.longitude)
+
+		
 		self.locationManager.stopUpdatingLocation()
 	}
 	
@@ -189,6 +200,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //	TODO: WRAP UP WEATHER INFO
 	
 	@IBAction func displayShareSheet() {
+		
 		let activityViewController = UIActivityViewController(activityItems: ["AA" as NSString], applicationActivities: nil)
 		presentViewController(activityViewController, animated: true, completion: {})
 	}
