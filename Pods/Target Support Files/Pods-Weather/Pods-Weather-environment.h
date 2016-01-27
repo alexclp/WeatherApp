@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 1
 #define COCOAPODS_VERSION_PATCH_Alamofire 5
 
+// Eureka
+#define COCOAPODS_POD_AVAILABLE_Eureka
+#define COCOAPODS_VERSION_MAJOR_Eureka 1
+#define COCOAPODS_VERSION_MINOR_Eureka 3
+#define COCOAPODS_VERSION_PATCH_Eureka 1
+

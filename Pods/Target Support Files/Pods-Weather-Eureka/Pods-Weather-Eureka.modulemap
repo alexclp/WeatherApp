@@ -1,0 +1,6 @@
+framework module Eureka {
+  umbrella header "Pods-Weather-Eureka-umbrella.h"
+
+  export *
+  module * { export * }
+}

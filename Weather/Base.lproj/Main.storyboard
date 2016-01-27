@@ -44,20 +44,24 @@
                                             <action selector="displayShareSheet" destination="BYZ-38-t0r" id="8Zp-Kc-Nha"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3qt-g3-xnt"/>
-                                    <barButtonItem systemItem="edit" id="Ffv-mU-wQ3"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Fxg-Hr-OTd"/>
+                                    <barButtonItem systemItem="edit" id="Ffv-mU-wQ3">
+                                        <connections>
+                                            <segue destination="9QQ-lT-VtT" kind="presentation" modalTransitionStyle="flipHorizontal" id="SXH-y3-g8f"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="656-Il-2Bw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ibb-zO-X2l"/>
-                            <constraint firstAttribute="trailing" secondItem="656-Il-2Bw" secondAttribute="trailing" id="Myh-HT-zG3"/>
-                            <constraint firstItem="656-Il-2Bw" firstAttribute="top" secondItem="xWu-Fb-J0V" secondAttribute="bottom" id="Vmx-HH-QTc"/>
-                            <constraint firstItem="656-Il-2Bw" firstAttribute="trailing" secondItem="xWu-Fb-J0V" secondAttribute="trailing" id="haM-l0-Lfy"/>
-                            <constraint firstItem="656-Il-2Bw" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="mqL-M7-4Tk"/>
-                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rSa-3H-F3S"/>
-                            <constraint firstItem="656-Il-2Bw" firstAttribute="leading" secondItem="xWu-Fb-J0V" secondAttribute="leading" id="rqF-F1-R6K"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="top" secondItem="xWu-Fb-J0V" secondAttribute="bottom" id="7uy-is-Afj"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="93t-3S-LJJ"/>
+                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="leading" secondItem="656-Il-2Bw" secondAttribute="leading" id="95A-bC-Mlf"/>
+                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SDW-cl-oJT"/>
+                            <constraint firstItem="656-Il-2Bw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dxg-dT-itK"/>
+                            <constraint firstAttribute="trailing" secondItem="xWu-Fb-J0V" secondAttribute="trailing" id="hgJ-Hc-Azc"/>
+                            <constraint firstItem="xWu-Fb-J0V" firstAttribute="trailing" secondItem="656-Il-2Bw" secondAttribute="trailing" id="jiI-TV-r36"/>
                         </constraints>
                     </view>
                     <connections>
@@ -67,6 +71,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="317"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Upf-ls-2mT">
+            <objects>
+                <viewController id="9QQ-lT-VtT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="teS-qZ-fxp"/>
+                        <viewControllerLayoutGuide type="bottom" id="6lk-03-yNn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FBC-Lx-rAK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Pb-F6-BlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1322" y="317"/>
         </scene>
     </scenes>
 </document>
