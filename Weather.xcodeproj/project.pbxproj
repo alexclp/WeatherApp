@@ -21,6 +21,7 @@
 		0F7461CB1C59BB7B00951AC9 /* LocationSelecterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */; };
 		0F7461CD1C59BBBF00951AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7461CC1C59BBBF00951AC9 /* MapKit.framework */; };
 		0F7461CF1C59BCB500951AC9 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461CE1C59BCB500951AC9 /* CustomAnnotation.swift */; };
+		0F7461D31C59DBD700951AC9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7461D21C59DBD700951AC9 /* settings.png */; };
 		0FD994491C5329F900EAB412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD994481C5329F900EAB412 /* AppDelegate.swift */; };
 		0FD9944B1C5329F900EAB412 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9944A1C5329F900EAB412 /* WeatherViewController.swift */; };
 		0FD9944E1C5329F900EAB412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9944C1C5329F900EAB412 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelecterViewController.swift; sourceTree = "<group>"; };
 		0F7461CC1C59BBBF00951AC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0F7461CE1C59BCB500951AC9 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		0F7461D21C59DBD700951AC9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		0FD994451C5329F900EAB412 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD994481C5329F900EAB412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FD9944A1C5329F900EAB412 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		0FD994851C56800200EAB412 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0F7461D21C59DBD700951AC9 /* settings.png */,
 				0FD994861C56800B00EAB412 /* placeholder.png */,
 				0F271E6C1C58C3730020DEAD /* Weather icons */,
 			);
@@ -374,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7461D31C59DBD700951AC9 /* settings.png in Resources */,
 				0FD994841C56768E00EAB412 /* WeatherForecastCustomCell.xib in Resources */,
 				0FD994871C56800B00EAB412 /* placeholder.png in Resources */,
 				0F271E7C1C58C37F0020DEAD /* shower_rain.png in Resources */,
