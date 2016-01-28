@@ -110,8 +110,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
 				
 				if let maxTemp = current.maxTemp, windSpeed = current.windSpeed {
 					var feelslike = WindChillCalculator.calculateFactor(maxTemp, windSpeed: windSpeed, units: "metric")
-					print("feels like: \(feelslike)")
-					print("max temp: \(maxTemp)")
 					feelslike = "\(feelslike.componentsSeparatedByString(".")[0])°"
 					let maxTemp = "\(maxTemp.componentsSeparatedByString(".")[0])°"
 					
