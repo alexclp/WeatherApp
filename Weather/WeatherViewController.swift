@@ -248,9 +248,23 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
 //	MARK: USER INTERACTION
 //	TODO: WRAP UP WEATHER INFO
 	
+	func stringToShare() -> String {
+		
+		var toReturn = "Weather in \(self.currentCity) is\n"
+		
+		for day in days {
+			let date = NSDate(timeIntervalSince1970: Double(day.timestamp!)!)
+			if let maxTemp = day.maxTemp, minTemp = day.minTemp {
+				toReturn.appendContentsOf("\(DateUtility.getDayOfWeek(DateUtility.stringFromDate(date))) \(maxTemp.componentsSeparatedByString(".")[0]) \(minTemp.componentsSeparatedByString(".")[0])\n")
+			}
+		}
+		
+		return toReturn
+	}
+	
 	@IBAction func displayShareSheet() {
 		
-		let activityViewController = UIActivityViewController(activityItems: ["AA" as NSString], applicationActivities: nil)
+		let activityViewController = UIActivityViewController(activityItems: [stringToShare() as NSString], applicationActivities: nil)
 		presentViewController(activityViewController, animated: true, completion: {})
 	}
 	
