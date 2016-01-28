@@ -32,8 +32,6 @@ class WeatherProvider: NSObject {
 					if let json = data as? Dictionary<NSObject, AnyObject> {
 						let temps = json["main"] as! Dictionary<String, AnyObject>
 						
-						print(temps)
-						
 						if let temp = temps["temp"] {
 							let stringRepresentation = String(temp)
 							let separated = stringRepresentation.componentsSeparatedByString(".")[0]
