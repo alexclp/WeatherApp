@@ -18,6 +18,8 @@ class WeatherProvider: NSObject {
 	class func provideCurrentWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: (WeatherDay) -> Void) {
 		let urlString = basicURLCurrent + "?lat=\(latitude)&lon=\(longitude)&appid=\(appID)&units=metric"
 		
+		print("Crashing URL:\(urlString)")
+		
 		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
 			
 			let weatherDayObject = WeatherDay()
@@ -30,9 +32,13 @@ class WeatherProvider: NSObject {
 					if let json = data as? Dictionary<NSObject, AnyObject> {
 						let temps = json["main"] as! Dictionary<String, AnyObject>
 						
-						var temp = String(temps["temp"]!)
-						temp = temp.componentsSeparatedByString(".")[0]
-						weatherDayObject.maxTemp = temp
+						print(temps)
+						
+						if let temp = temps["temp"] {
+							let stringRepresentation = String(temp)
+							let separated = stringRepresentation.componentsSeparatedByString(".")[0]
+							weatherDayObject.maxTemp = separated
+						}
 						
 						let windSpeeds = json["wind"] as! Dictionary<String, Double>
 						weatherDayObject.windSpeed = String(windSpeeds["speed"]!)

@@ -62,8 +62,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate  {
 		if let automatic = NSUserDefaults.standardUserDefaults().objectForKey("autoLocation") {
 			if automatic as! Bool {
 				locationModeSwitch.on = true
+				cityCell.hidden = true
 			} else {
 				locationModeSwitch.on = false
+				cityCell.hidden = false
 			}
 		}
 	}

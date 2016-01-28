@@ -48,7 +48,8 @@ class LocationSelecterViewController: UIViewController {
 		}
 		
 		NSUserDefaults.standardUserDefaults().setBool(false, forKey: "autoLocation")
-		NSUserDefaults.standardUserDefaults().setObject(CLLocation(latitude: (touchMapCoordinate?.latitude)!, longitude: (touchMapCoordinate?.longitude)!), forKey: "lastCoordinateManual")
+		NSUserDefaults.standardUserDefaults().setDouble((touchMapCoordinate?.latitude)!, forKey: "lastLatitude")
+		NSUserDefaults.standardUserDefaults().setDouble((touchMapCoordinate?.longitude)!, forKey: "lastLongitude")
 		NSUserDefaults.standardUserDefaults().synchronize()
 		
 		mapView?.addAnnotation(annotation)
