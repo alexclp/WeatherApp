@@ -9,45 +9,58 @@
 import UIKit
 import Eureka
 
-class SettingsViewController: UITableViewController, UINavigationBarDelegate  {
+class SettingsViewController: UITableViewController, UITextFieldDelegate  {
 
 	@IBOutlet weak var locationModeSwitch: UISwitch!
 	@IBOutlet weak var unitsSegmentedControl: UISegmentedControl!
 	@IBOutlet weak var cityCell: UITableViewCell!
 	@IBOutlet weak var cityTextField: UITextField!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		
-//		createNavBar()
+		self.title = "Settings"
 		
 	}
 	
 	@IBAction func switchValueChanged(sender: AnyObject) {
+		if locationModeSwitch.on {
+			cityCell.hidden = true
+		} else {
+			cityCell.hidden = false
+		}
 	}
-	@IBAction func unitChanged(sender: AnyObject) {
-	}
-	func createNavBar() {
-		// Create the navigation bar
-		let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 60)) // Offset by 20 pixels vertically to take the status bar into account
-		
-		navigationBar.backgroundColor = UIColor.whiteColor()
-		navigationBar.delegate = self;
-		
-		let navigationItem = UINavigationItem()
-		navigationItem.title = "Title"
-		
-		let rightButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "doneButtonClicked:")
-		
-		navigationItem.rightBarButtonItem = rightButton
-		
-		navigationBar.items = [navigationItem]
-		
-		self.view.addSubview(navigationBar)
-	}
-
 	
+	@IBAction func unitChanged(sender: AnyObject) {
+	
+	}
+	
+	// MARK: Table View Stuff
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		print("Click at index: \(indexPath)")
+		if indexPath.row == 1 && indexPath.section == 0 {
+			tableView.deselectRowAtIndexPath(indexPath, animated: true)
+			performSegueWithIdentifier("showMapSegue", sender: self)
+		}
+	}
+	
+	// MARK: Text Field Delegate
+	
+	func textFieldDidEndEditing(textField: UITextField) {
+		
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		NSUserDefaults.standardUserDefaults().setObject(cityTextField.text, forKey: "city")
+		NSUserDefaults.standardUserDefaults().synchronize()
+		
+		cityTextField.resignFirstResponder()
+		
+		return true
+	}
 	
     // MARK: - Navigation
 

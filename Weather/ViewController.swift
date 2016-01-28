@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 	
-		LocationUtility.sharedLocationUtility().coordinatesForCityName("London") { (coordinate) -> Void in
+		LocationUtility.sharedLocationUtility().coordinatesForCityName("Adsadasa") { (coordinate) -> Void in
 			
 		}
 		

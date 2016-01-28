@@ -18,6 +18,9 @@
 		0F271E7E1C58C37F0020DEAD /* thunderstorm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E751C58C37F0020DEAD /* thunderstorm.png */; };
 		0F271E801C592E210020DEAD /* LocationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F271E7F1C592E210020DEAD /* LocationUtility.swift */; };
 		0F7461C81C594E0500951AC9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461C71C594E0500951AC9 /* SettingsViewController.swift */; };
+		0F7461CB1C59BB7B00951AC9 /* LocationSelecterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */; };
+		0F7461CD1C59BBBF00951AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7461CC1C59BBBF00951AC9 /* MapKit.framework */; };
+		0F7461CF1C59BCB500951AC9 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461CE1C59BCB500951AC9 /* CustomAnnotation.swift */; };
 		0FD994491C5329F900EAB412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD994481C5329F900EAB412 /* AppDelegate.swift */; };
 		0FD9944B1C5329F900EAB412 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9944A1C5329F900EAB412 /* ViewController.swift */; };
 		0FD9944E1C5329F900EAB412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9944C1C5329F900EAB412 /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 		0F271E751C58C37F0020DEAD /* thunderstorm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thunderstorm.png; sourceTree = "<group>"; };
 		0F271E7F1C592E210020DEAD /* LocationUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationUtility.swift; sourceTree = "<group>"; };
 		0F7461C71C594E0500951AC9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelecterViewController.swift; sourceTree = "<group>"; };
+		0F7461CC1C59BBBF00951AC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0F7461CE1C59BCB500951AC9 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		0FD994451C5329F900EAB412 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD994481C5329F900EAB412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FD9944A1C5329F900EAB412 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7461CD1C59BBBF00951AC9 /* MapKit.framework in Frameworks */,
 				0FD9947C1C546B3C00EAB412 /* CoreLocation.framework in Frameworks */,
 				61BA676AE61CF1DE8FB5FBD7 /* Pods_Weather.framework in Frameworks */,
 			);
@@ -212,6 +219,7 @@
 				0FD994481C5329F900EAB412 /* AppDelegate.swift */,
 				0FD9944A1C5329F900EAB412 /* ViewController.swift */,
 				0F7461C71C594E0500951AC9 /* SettingsViewController.swift */,
+				0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				0FD994891C57001500EAB412 /* CurrentWeatherCustomTableViewCell.xib */,
 				0FD994811C56766600EAB412 /* WeatherForecastCustomCell.swift */,
 				0FD994831C56768E00EAB412 /* WeatherForecastCustomCell.xib */,
+				0F7461CE1C59BCB500951AC9 /* CustomAnnotation.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -241,6 +250,7 @@
 		2BCCB19766BCB85A5E07BF03 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F7461CC1C59BBBF00951AC9 /* MapKit.framework */,
 				0FD9947B1C546B3C00EAB412 /* CoreLocation.framework */,
 				B48B538B38EB097EBA40FBD9 /* Pods_Weather.framework */,
 			);
@@ -453,6 +463,8 @@
 			files = (
 				0FD9948A1C57001500EAB412 /* CurrentWeatherCustomTableViewCell.swift in Sources */,
 				0FD994801C546DFF00EAB412 /* WeatherServer.swift in Sources */,
+				0F7461CB1C59BB7B00951AC9 /* LocationSelecterViewController.swift in Sources */,
+				0F7461CF1C59BCB500951AC9 /* CustomAnnotation.swift in Sources */,
 				0F7461C81C594E0500951AC9 /* SettingsViewController.swift in Sources */,
 				0FD9944B1C5329F900EAB412 /* ViewController.swift in Sources */,
 				0FD9947E1C546B7200EAB412 /* WeatherDay.swift in Sources */,
