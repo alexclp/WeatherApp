@@ -73,35 +73,11 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate  {
 	// MARK: Table View Stuff
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		print("Click at index: \(indexPath)")
 		if indexPath.row == 1 && indexPath.section == 0 {
 			tableView.deselectRowAtIndexPath(indexPath, animated: true)
 			performSegueWithIdentifier("showMapSegue", sender: self)
 		}
 	}
-	
-	// MARK: Text Field Delegate
-	
-	func textFieldDidEndEditing(textField: UITextField) {
-		
-	}
-	
-	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		NSUserDefaults.standardUserDefaults().setObject(cityTextField.text, forKey: "city")
-		NSUserDefaults.standardUserDefaults().synchronize()
-		
-		cityTextField.resignFirstResponder()
-		
-		return true
-	}
-	
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "showWeatherSegue" {
-//			Save data
-		}
-    }
 	
 	@IBAction func doneButtonClicked(sender: UIBarButtonItem) {
 		performSegueWithIdentifier("showWeatherSegue", sender: nil)
