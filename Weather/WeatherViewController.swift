@@ -15,7 +15,7 @@ extension String {
 	}
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 	
 	var days = [WeatherDay]()
 	let locationManager = CLLocationManager()
