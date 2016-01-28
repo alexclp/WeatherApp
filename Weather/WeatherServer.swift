@@ -49,7 +49,16 @@ class WeatherServer: NSObject {
 				do {
 					
 					let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
-					completitionHandler(.Success(json))
+					
+					if let cod = json["cod"] {
+						let stringCode = String(cod!)
+						if stringCode == "200" {
+							completitionHandler(.Success(json))
+						} else {
+							completitionHandler(.Failure(.ServerError))
+						}
+					}
+					
 					
 				} catch {
 					

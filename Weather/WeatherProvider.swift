@@ -26,9 +26,6 @@ class WeatherProvider: NSObject {
 		}
 		
 		
-		
-		print("Crashing URL:\(urlString)")
-		
 		WeatherServer.sharedServer().GET(urlString) { (response) -> Void in
 			
 			let weatherDayObject = WeatherDay()
