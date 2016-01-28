@@ -21,7 +21,17 @@ class LocationSelecterViewController: UIViewController {
 		mapView?.addGestureRecognizer(longPressGesture)
 		
 		self.title = "Place a pin"
+		
+		setupView()
     }
+	
+	func setupView() {
+		if let coordinate: CLLocation = NSUserDefaults.standardUserDefaults().objectForKey("lastCoordinateManual") as? CLLocation {
+			let annotation = CustomAnnotation.init(coordinate: coordinate.coordinate, title: "", subtitle: "")
+			
+			mapView?.addAnnotation(annotation)
+		}
+	}
 
 	func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
 		if gestureRecognizer.state != UIGestureRecognizerState.Began {
@@ -36,6 +46,10 @@ class LocationSelecterViewController: UIViewController {
 		if let annotations = mapView?.annotations {
 			mapView?.removeAnnotations(annotations)
 		}
+		
+		NSUserDefaults.standardUserDefaults().setBool(false, forKey: "autoLocation")
+		NSUserDefaults.standardUserDefaults().setObject(CLLocation(latitude: (touchMapCoordinate?.latitude)!, longitude: (touchMapCoordinate?.longitude)!), forKey: "lastCoordinateManual")
+		NSUserDefaults.standardUserDefaults().synchronize()
 		
 		mapView?.addAnnotation(annotation)
 	}

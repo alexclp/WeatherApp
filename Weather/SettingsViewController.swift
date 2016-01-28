@@ -23,18 +23,49 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate  {
 		
 		self.title = "Settings"
 		
+		setupView()
 	}
 	
 	@IBAction func switchValueChanged(sender: AnyObject) {
 		if locationModeSwitch.on {
 			cityCell.hidden = true
+			
+			NSUserDefaults.standardUserDefaults().setBool(true, forKey: "autoLocation")
 		} else {
 			cityCell.hidden = false
+			
+			NSUserDefaults.standardUserDefaults().setBool(false, forKey: "autoLocation")
 		}
+		
+		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
 	@IBAction func unitChanged(sender: AnyObject) {
+		if unitsSegmentedControl.selectedSegmentIndex == 0 {
+			NSUserDefaults.standardUserDefaults().setObject("metric", forKey: "units")
+		} else {
+			NSUserDefaults.standardUserDefaults().setObject("imperial", forKey: "units")
+		}
+		
+		NSUserDefaults.standardUserDefaults().synchronize()
+	}
 	
+	func setupView() {
+		if let unit = NSUserDefaults.standardUserDefaults().objectForKey("units") {
+			if unit as! String == "metric" {
+				unitsSegmentedControl.selectedSegmentIndex = 0
+			} else if unit as! String == "imperial" {
+				unitsSegmentedControl.selectedSegmentIndex = 1
+			}
+		}
+		
+		if let automatic = NSUserDefaults.standardUserDefaults().objectForKey("autoLocation") {
+			if automatic as! Bool {
+				locationModeSwitch.on = true
+			} else {
+				locationModeSwitch.on = false
+			}
+		}
 	}
 	
 	// MARK: Table View Stuff
