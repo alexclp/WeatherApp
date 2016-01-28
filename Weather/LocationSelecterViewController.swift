@@ -26,10 +26,18 @@ class LocationSelecterViewController: UIViewController {
     }
 	
 	func setupView() {
-		if let coordinate: CLLocation = NSUserDefaults.standardUserDefaults().objectForKey("lastCoordinateManual") as? CLLocation {
-			let annotation = CustomAnnotation.init(coordinate: coordinate.coordinate, title: "", subtitle: "")
+		
+		if NSUserDefaults.standardUserDefaults().doubleForKey("lastLatitude") != 0.0 &&
+		NSUserDefaults.standardUserDefaults().doubleForKey("lastLongitude") != 0.0 {
+			let coordinate = CLLocationCoordinate2D(latitude: NSUserDefaults.standardUserDefaults().doubleForKey("lastLatitude"), longitude: NSUserDefaults.standardUserDefaults().doubleForKey("lastLongitude"))
+			
+			let annotation = CustomAnnotation.init(coordinate: coordinate, title: "", subtitle: "")
 			
 			mapView?.addAnnotation(annotation)
+			
+			let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 30.0, longitudeDelta: 30.0))
+			mapView?.setRegion(region, animated: true)
+			
 		}
 	}
 
