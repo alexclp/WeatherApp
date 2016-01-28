@@ -109,9 +109,9 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
 				let current = day
 				
 				if let maxTemp = current.maxTemp, windSpeed = current.windSpeed {
-					var feelslike = WindChillCalculator.calculateFactor(maxTemp, windSpeed: windSpeed, units: "metric")
-					feelslike = "\(feelslike.componentsSeparatedByString(".")[0])°"
-					let maxTemp = "\(maxTemp.componentsSeparatedByString(".")[0])°"
+					var feelslike = WindChillCalculator.calculateFactor(maxTemp, windSpeed: windSpeed)
+					feelslike = "\(feelslike.componentsSeparatedByString(".")[0])"
+					let maxTemp = "\(maxTemp.componentsSeparatedByString(".")[0])"
 					
 					let attributedDegrees = NSMutableAttributedString(string: "\(maxTemp), feels like \(feelslike)")
 					attributedDegrees.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location: 0, length: maxTemp.length))
@@ -151,11 +151,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
 			cell.descLabel?.text = current.briefDesc
 			
 			if let minTemp = current.minTemp {
-				cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0] + "°"
+				cell.minLabel?.text = minTemp.componentsSeparatedByString(".")[0]
 			}
 			
 			if let maxTemp = current.maxTemp {
-				cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0] + "°"
+				cell.maxLabel?.text = maxTemp.componentsSeparatedByString(".")[0]
 			}
 			
 			if let desc = current.briefDesc {

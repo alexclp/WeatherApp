@@ -16,7 +16,16 @@ class WeatherProvider: NSObject {
 	static let appID = "750458e9cdcade313ceb5e65e250e8fd"
 	
 	class func provideCurrentWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: (WeatherDay) -> Void) {
-		let urlString = basicURLCurrent + "?lat=\(latitude)&lon=\(longitude)&appid=\(appID)&units=metric"
+		
+		var urlString = basicURLCurrent + "?lat=\(latitude)&lon=\(longitude)&appid=\(appID)&units="
+		
+		if let units = NSUserDefaults.standardUserDefaults().objectForKey("units") {
+			urlString.appendContentsOf((units as! String))
+		} else {
+			urlString.appendContentsOf("metric")
+		}
+		
+		
 		
 		print("Crashing URL:\(urlString)")
 		
@@ -57,7 +66,14 @@ class WeatherProvider: NSObject {
 	
 	class func provideWeatherForCoordinates(latitude: Double, _ longitude: Double, completionBlock: ([WeatherDay]) -> Void)  {
 		
-		let urlString = basicURL + "?lat=\(latitude)&lon=\(longitude)&mode=json&units=metric&cnt=10&appid=\(appID)"
+		var urlString = basicURL + "?lat=\(latitude)&lon=\(longitude)&mode=json&cnt=10&appid=\(appID)&units="
+		
+		if let units = NSUserDefaults.standardUserDefaults().objectForKey("units") {
+			urlString.appendContentsOf((units as! String))
+		} else {
+			urlString.appendContentsOf("metric")
+		}
+		
 		print("url: \(urlString)")
 		print("Providing weather")
 		
