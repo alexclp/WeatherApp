@@ -17,6 +17,15 @@
 		0F271E7D1C58C37F0020DEAD /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E741C58C37F0020DEAD /* snow.png */; };
 		0F271E7E1C58C37F0020DEAD /* thunderstorm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E751C58C37F0020DEAD /* thunderstorm.png */; };
 		0F271E801C592E210020DEAD /* LocationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F271E7F1C592E210020DEAD /* LocationUtility.swift */; };
+		0F2A9C201C611E72003FF5CA /* broken_clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E6D1C58C37F0020DEAD /* broken_clouds.png */; };
+		0F2A9C211C611E72003FF5CA /* clear_sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E6E1C58C37F0020DEAD /* clear_sky.png */; };
+		0F2A9C221C611E72003FF5CA /* few_clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E6F1C58C37F0020DEAD /* few_clouds.png */; };
+		0F2A9C231C611E72003FF5CA /* mist.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E701C58C37F0020DEAD /* mist.png */; };
+		0F2A9C241C611E72003FF5CA /* rain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E711C58C37F0020DEAD /* rain.png */; };
+		0F2A9C251C611E72003FF5CA /* scattered_clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E721C58C37F0020DEAD /* scattered_clouds.png */; };
+		0F2A9C261C611E72003FF5CA /* shower_rain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E731C58C37F0020DEAD /* shower_rain.png */; };
+		0F2A9C271C611E72003FF5CA /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E741C58C37F0020DEAD /* snow.png */; };
+		0F2A9C281C611E72003FF5CA /* thunderstorm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F271E751C58C37F0020DEAD /* thunderstorm.png */; };
 		0F7461C81C594E0500951AC9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461C71C594E0500951AC9 /* SettingsViewController.swift */; };
 		0F7461CB1C59BB7B00951AC9 /* LocationSelecterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7461CA1C59BB7B00951AC9 /* LocationSelecterViewController.swift */; };
 		0F7461CD1C59BBBF00951AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7461CC1C59BBBF00951AC9 /* MapKit.framework */; };
@@ -27,6 +36,7 @@
 		0F86CA211C5FCE4E00287DD5 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86CA201C5FCE4E00287DD5 /* TodayViewController.swift */; };
 		0F86CA241C5FCE4E00287DD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F86CA221C5FCE4E00287DD5 /* MainInterface.storyboard */; };
 		0F86CA281C5FCE4E00287DD5 /* WeatherWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F86CA1C1C5FCE4E00287DD5 /* WeatherWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0F86CA301C602E7000287DD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F86CA221C5FCE4E00287DD5 /* MainInterface.storyboard */; };
 		0FD994491C5329F900EAB412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD994481C5329F900EAB412 /* AppDelegate.swift */; };
 		0FD9944B1C5329F900EAB412 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9944A1C5329F900EAB412 /* WeatherViewController.swift */; };
 		0FD9944E1C5329F900EAB412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9944C1C5329F900EAB412 /* Main.storyboard */; };
@@ -455,7 +465,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2A9C251C611E72003FF5CA /* scattered_clouds.png in Resources */,
+				0F2A9C221C611E72003FF5CA /* few_clouds.png in Resources */,
+				0F2A9C281C611E72003FF5CA /* thunderstorm.png in Resources */,
+				0F2A9C271C611E72003FF5CA /* snow.png in Resources */,
+				0F2A9C231C611E72003FF5CA /* mist.png in Resources */,
+				0F2A9C261C611E72003FF5CA /* shower_rain.png in Resources */,
+				0F2A9C201C611E72003FF5CA /* broken_clouds.png in Resources */,
 				0F86CA241C5FCE4E00287DD5 /* MainInterface.storyboard in Resources */,
+				0F2A9C211C611E72003FF5CA /* clear_sky.png in Resources */,
+				0F2A9C241C611E72003FF5CA /* rain.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +496,7 @@
 				0F271E791C58C37F0020DEAD /* mist.png in Resources */,
 				0FD994501C5329F900EAB412 /* Assets.xcassets in Resources */,
 				0FD9944E1C5329F900EAB412 /* Main.storyboard in Resources */,
+				0F86CA301C602E7000287DD5 /* MainInterface.storyboard in Resources */,
 				0F271E7D1C58C37F0020DEAD /* snow.png in Resources */,
 				0F271E781C58C37F0020DEAD /* few_clouds.png in Resources */,
 			);
@@ -839,6 +859,7 @@
 				0F86CA2A1C5FCE4E00287DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FD994401C5329F900EAB412 /* Build configuration list for PBXProject "Weather" */ = {
 			isa = XCConfigurationList;
